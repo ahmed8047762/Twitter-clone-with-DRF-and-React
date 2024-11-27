@@ -2,13 +2,16 @@
 
 {%block title%}This is amazing{%endblock title%}
 {%block content%}
-<div class = 'row text-center'>
+
+<div id = 'tweetme-2'></div>
+
+<div class = 'row text-center d-none'>
     <div class = 'col'>
         <h1>Welcome to Tweetme2</h1>
     </div>
 </div>
 
-<div class = 'row mb-3'>
+<div class = 'row mb-3 d-none'>
     <div class = 'col-md-4 mx-auto col-10'>
         <form class = 'form' id='tweet-create-form' method = 'POST' action = '/create-tweet/'>
             {% csrf_token %}
@@ -20,7 +23,7 @@
     </div>
 </div>
 
-    <div class="row" id="tweets">
+    <div class="row d-none" id="tweets">
         Loading...
     </div>
 
@@ -166,7 +169,7 @@ function UnLikeBtn(tweet) {
 }
 
 function LikeBtn(tweet) {
-    return " <button class = 'btn btn-primary btn-smooth' onclick='handleTweetActionBtn(" +
+    return " <button class = 'btn btn-primary btn-smooth' onclick='handleDidLike(" +
     tweet.id + ", " + tweet.likes + ", \"like\")'>" + tweet.likes + " Like</button>"
 }
 
