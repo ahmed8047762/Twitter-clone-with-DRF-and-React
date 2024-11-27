@@ -7,22 +7,18 @@ import reportWebVitals from './reportWebVitals';
 
 const appEl = document.getElementById('root')
 if (appEl) {
-  const root = ReactDOM.createRoot(appEl);
-  root.render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  );
+    const root = ReactDOM.createRoot(appEl);
+    root.render(
+        <React.StrictMode>
+            <App />
+        </React.StrictMode>
+    );
 }
 
-const tweetsEl = document.getElementById('tweetme-2')
+const tweetsEl = document.getElementById("tweetme-2")
 if (tweetsEl) {
     const tweetRoot = ReactDOM.createRoot(tweetsEl);
-    tweetRoot.render(
-      <React.StrictMode>
-        <TweetsComponent/>
-      </React.StrictMode>
-    );
+    tweetRoot.render(React.createElement(TweetsComponent, tweetsEl.dataset));
 }
 
 // If you want to start measuring performance in your app, pass a function

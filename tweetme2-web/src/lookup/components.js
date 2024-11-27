@@ -14,13 +14,15 @@ function getCookie(name) {
   return cookieValue;
 }
 
-function lookup(method, endpoint, callback, data) {
+export function backendLookup(method, endpoint, callback, data) {
   let jsonData;
   if (data) {
     jsonData = JSON.stringify(data) 
   }
   const xhr = new XMLHttpRequest()
-  const url = `http://localhost:8000/api/${endpoint}/`
+  // Check if endpoint contains query parameters
+  const hasParams = endpoint.includes('?')
+  const url = `http://localhost:8000/api/${endpoint}${hasParams ? '' : '/'}`
   const responseType = "json"
 
   xhr.responseType = responseType
@@ -39,13 +41,6 @@ function lookup(method, endpoint, callback, data) {
     console.log(e)
     callback({"message": "error"}, xhr.status)
   }
+  console.log(jsonData)
   xhr.send(jsonData)
-}
-
-export function createTweet(newTweet, callback) {
-  lookup('POST', 'tweets/create', callback, {content: newTweet})
-}
-
-export function loadTweets(callback) {
-  lookup('GET', 'tweets', callback)
 }
