@@ -20,9 +20,7 @@ export function backendLookup(method, endpoint, callback, data) {
     jsonData = JSON.stringify(data) 
   }
   const xhr = new XMLHttpRequest()
-  // Check if endpoint contains query parameters
-  const hasParams = endpoint.includes('?')
-  const url = `http://localhost:8000/api/${endpoint}${hasParams ? '' : '/'}`
+  const url = `http://localhost:8000/api/${endpoint}/`
   const responseType = "json"
 
   xhr.responseType = responseType
