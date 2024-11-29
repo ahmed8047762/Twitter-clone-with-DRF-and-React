@@ -33,10 +33,16 @@ export function backendLookup(method, endpoint, callback, data) {
     xhr.setRequestHeader("X-CSRFToken", csrftoken)
   }
   xhr.onload = function () {
+    if (xhr.status === 403) {
+      const detail = xhr.response.detail
+      if (detail === "Authentication credentials were not provided.") {
+        window.location.href = '/login?showLoginrequired=true'
+      }
+    } 
       callback(xhr.response, xhr.status)
   }
   xhr.onerror = function (e) {
-    console.log(e)
+    console.log("error", e)
     callback({"message": "error"}, xhr.status)
   }
   console.log(jsonData)
