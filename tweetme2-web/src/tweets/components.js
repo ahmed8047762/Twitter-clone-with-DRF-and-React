@@ -13,7 +13,7 @@ export function FeedComponent(props) {
       tempNewTweets.unshift(newTweet)
       setNewTweets(tempNewTweets)
     }
-    return <div className={props.className ? props.className : 'col-10 mx-auto col-md-6'}>
+    return <div className={props.className}>
             {canTweet === true && <TweetCreate didTweet={handleNewTweet} className='col-12 mb-3' />}
           <FeedList newTweets={newTweets} {...props} />
     </div>
