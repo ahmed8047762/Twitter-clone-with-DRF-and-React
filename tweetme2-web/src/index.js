@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import {TweetsComponent, TweetDetailComponent} from './tweets'
+import {FeedComponent, TweetsComponent, TweetDetailComponent} from './tweets'
 import reportWebVitals from './reportWebVitals';
 
 const appEl = document.getElementById('root')
@@ -20,6 +20,12 @@ const tweetsEl = document.getElementById("tweetme-2")
 if (tweetsEl) {
     const tweetRoot = ReactDOM.createRoot(tweetsEl);
     tweetRoot.render(e(TweetsComponent, tweetsEl.dataset));
+}
+
+const tweetFeedEl = document.getElementById("tweetme-2-feed")
+if (tweetFeedEl) {
+    const tweetRoot = ReactDOM.createRoot(tweetFeedEl);
+    tweetRoot.render(e(FeedComponent, tweetFeedEl.dataset));
 }
 
 const tweetDetailElements = document.querySelectorAll(".tweetme-2-detail")
