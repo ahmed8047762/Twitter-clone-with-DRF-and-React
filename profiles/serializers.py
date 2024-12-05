@@ -21,10 +21,6 @@ class PublicProfileSerializer(serializers.ModelSerializer):
         if request and request.user.is_authenticated:
             user = request.user
             followers = obj.followers.all()
-            print("Current user:", user.username)
-            print("Profile user:", obj.user.username)
-            print("Profile followers:", [follower.username for follower in followers])
-            print("Current user following:", [following.user.username for following in user.following.all()])
             is_following = user in followers
         return is_following
 
