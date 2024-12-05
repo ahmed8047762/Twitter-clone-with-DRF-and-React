@@ -5,6 +5,6 @@ User = get_user_model()
 
 class DevAuthentication(authentication.BasicAuthentication):
     def authenticate(self, request):
-        qs = User.objects.filter(id=3)
+        qs = User.objects.filter(id=1)  # Changed to use ahmed's ID (1)
         user = qs.order_by("?").first()
         return (user, None)

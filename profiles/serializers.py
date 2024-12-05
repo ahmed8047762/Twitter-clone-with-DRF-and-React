@@ -20,8 +20,11 @@ class PublicProfileSerializer(serializers.ModelSerializer):
         request = context.get('request')
         if request and request.user.is_authenticated:
             user = request.user
-            followers = obj.followers.all()
-            is_following = user in followers
+            # Don't check following status if looking at own profile
+            if user.username == obj.user.username:
+                is_following = False
+            else:
+                is_following = user in obj.followers.all()
         return is_following
 
     def get_first_name(self, obj):
